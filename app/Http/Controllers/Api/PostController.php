@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Post\StorePostRequest;
+use App\Http\Requests\Post\UpdatePostRequest;
 use App\Models\Post;
-use App\Http\Requests\StorePostRequest;
-use App\Http\Requests\UpdatePostRequest;
 use App\Http\Resources\PostResource;
 use Illuminate\Http\Request;
 
@@ -36,7 +36,7 @@ class PostController extends Controller
             $data
         ));
         return (new PostResource($post->loadMissing('user')))->additional([
-            'message' => 'Created successfully',
+            'message' => 'Post created successfully',
             'status' => true
         ])->response()->setStatusCode(201);
     }
@@ -52,7 +52,7 @@ class PostController extends Controller
         }
 
         return (new PostResource($post->loadMissing('user')))->additional([
-            'message' => 'success',
+            'message' => 'Posts retrieved successfully',
             'status' => true
         ]);
     }
@@ -68,12 +68,12 @@ class PostController extends Controller
             return response()->json(['message' => 'Post not found'], 404);
         }
         if ($post->user_id !== auth()->user()->id) {
-            return response()->json(['message' => 'Unauthorized'], 403);
+            return response()->json(['message' => 'You are not authorized to update this post'], 403);
         }
 
         $post->update($data);
         return (new PostResource($post->loadMissing('user')))->additional([
-            'message' => 'Updated successfully',
+            'message' => 'Post updated successfully',
             'status' => true
         ]);
     }
@@ -83,18 +83,16 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        $post = Post::find($id);
-        if (! $post) {
-            return response()->json(['message' => 'Post not found'], 404);
-        }
-    
-        if ($post->user_id !== auth()->user()->id) {
+        $post = Post::findOrFail($id);
+
+        if ($post->user_id !== auth()->id()) {
             return response()->json(['message' => 'Unauthorized'], 403);
         }
-        
+
         $post->delete();
         return response()->json([
-            'message' => 'Deleted successfully',
+            'message' => 'Post deleted successfully',
+            'status' => true
         ]);
     }
 }

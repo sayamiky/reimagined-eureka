@@ -18,15 +18,15 @@ Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanc
 Route::get('/posts', [PostController::class, 'index']);
 Route::get('/posts/{id}', [PostController::class, 'show']);
 
+Route::get('/users/{id}', [UserController::class, 'show']);
+Route::get('/users', [UserController::class, 'index']);
+
 Route::get('/weather', [WeatherController::class, 'current']);
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('/posts', [PostController::class, 'store']);
     Route::put('/posts/{id}', [PostController::class, 'update']);
     Route::delete('/posts/{id}', [PostController::class, 'destroy']);
-
-    Route::get('/users/{id}', [UserController::class, 'show']);
-    Route::get('/users', [UserController::class, 'index']);
 });
 
 Route::get('/test-mail', [AuthController::class, 'test']);

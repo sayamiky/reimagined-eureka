@@ -14,8 +14,8 @@ class WeatherService
     public function __construct()
     {
         $this->apiKey = config('services.openweathermap.key') ?? env('OPENWEATHERMAP_KEY');
-        $this->baseUrl = 'https://api.openweathermap.org/data/3.0/onecall';
-        // https: //api.openweathermap.org/data/3.0/onecall?lat={lat}&lon={lon}&exclude={part}&appid={API key}
+        $this->baseUrl = 'https://api.openweathermap.org/data/2.5';
+        // $this->baseUrl = 'https://api.openweathermap.org/data/3.0/onecall';
     }
 
     public function getCurrentWeatherForPerth()
@@ -24,19 +24,21 @@ class WeatherService
 
         return Cache::remember($cacheKey, now()->addMinutes(15), function () {
             try {
-                $response = Http::timeout(10)->get("{$this->baseUrl}/weather", [
-                    'lat' => -31.951399,
-                    'lon' => 115.861678,
-                    'execlude' => 'minutely,hourly,daily,alerts',
-                    'appid' => $this->apiKey,
-                    'units' => 'metric'
-                ]);
-
                 // $response = Http::timeout(10)->get("{$this->baseUrl}/weather", [
-                //     'q' => 'Perth,AU',
+                //     'lat' => -31.951399,
+                //     'lon' => 115.861678,
+                //     'exclude' => 'hourly',
                 //     'appid' => $this->apiKey,
                 //     'units' => 'metric'
                 // ]);
+
+                $response = Http::timeout(10)->get("{$this->baseUrl}/weather", [
+                    'lat' => -31.951399,
+                    'lon' => 115.861678,
+                    'appid' => $this->apiKey,
+                    'units' => 'metric'
+
+                ]);
 
                 if ($response->failed()) {
                     Log::error('OpenWeatherMap failed', ['status' => $response->status(), 'body' => $response->body()]);
@@ -45,7 +47,7 @@ class WeatherService
 
                 return $response->json();
             } catch (\Throwable $e) {
-                
+
                 if (Cache::has('weather:perth:current')) {
                     return Cache::get('weather:perth:current');
                 }
@@ -60,12 +62,12 @@ class WeatherService
         $cacheKey = 'weather:perth:current';
         try {
             $response = Http::timeout(10)->get("{$this->baseUrl}/weather", [
-                    'lat' => -31.951399,
-                    'lon' => 115.861678,
-                    'execlude' => 'minutely,hourly,daily,alerts',
-                    'appid' => $this->apiKey,
-                    'units' => 'metric'
-                ]);
+                'lat' => -31.951399,
+                'lon' => 115.861678,
+                'appid' => $this->apiKey,
+                'units' => 'metric'
+
+            ]);
 
             if ($response->failed()) {
                 throw new \Exception('Failed to fetch weather');

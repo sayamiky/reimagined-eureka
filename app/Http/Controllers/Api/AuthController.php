@@ -6,11 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Http\Requests\Auth\RegisterRequest;
 use App\Jobs\SendWelcomeEmailJob;
-use App\Mail\WelcomeMail;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Mail;
 
 class AuthController extends Controller
 {
@@ -39,9 +37,6 @@ class AuthController extends Controller
             return response()->json(['message' => 'Invalid credentials'], 401);
         }
 
-        // revoke previous tokens
-        // $user->tokens()->delete();
-
         $token = $user->createToken('api-token')->plainTextToken;
         return response()->json([
             'data' => $user,
@@ -53,10 +48,6 @@ class AuthController extends Controller
     public function logout(Request $request)
     {
         $request->user()->currentAccessToken()->delete();
-        return response()->json(['message' => 'Logged out']);
-    }
-
-    function test() {
-        Mail::to('your_test_mail@gmail.com')->send(new WelcomeMail(User::first()));
+        return response()->json(['message' => 'Logged out successfully']);
     }
 }

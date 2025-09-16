@@ -1,4 +1,4 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+<!-- <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
 <a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
@@ -58,4 +58,35 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT). -->
+
+
+# 🚀 Laravel API with User & Weather Tests  
+
+![Laravel](https://img.shields.io/badge/Laravel-10.x-red)  
+![PHP](https://img.shields.io/badge/PHP-8.1+-blue)  
+![Tested](https://img.shields.io/badge/Tests-Passing-green)  
+
+## 📘 Project Overview  
+Project ini adalah **REST API berbasis Laravel** yang mendukung:  
+- 🔹 **User Management** (list user, register user dengan validasi sukses & gagal).  
+- 🔹 **Weather API** (fetch data cuaca dari layanan eksternal).  
+- 🔹 **Unit & Feature Tests** menggunakan PHPUnit.  
+
+---
+
+## 🛠️ Tech Stack  
+- **Laravel** 12+  
+- **PHP** 8.2+  
+- **MySQL**  
+- **PHPUnit**
+
+---
+
+## 📂 Project Setup  
+
+### 1️⃣ Clone & Install Dependencies  
+```bash
+git clone https://github.com/username/laravel-api-project.git
+cd laravel-api-project
+composer install
