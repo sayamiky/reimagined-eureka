@@ -67,27 +67,28 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 ![Tested](https://img.shields.io/badge/Tests-Passing-green)
 
 ## 📘 Project Overview
-
-Project ini adalah **REST API berbasis Laravel** yang mendukung:
-
--   🔹 **User Management** (list user, register user dengan validasi sukses & gagal).
--   🔹 **Weather API** (fetch data cuaca dari layanan eksternal).
--   🔹 **Unit & Feature Tests** menggunakan PHPUnit.
+RESTful API built with Laravel. Features:
+- Users & Posts (CRUD for posts, user registration/login with Sanctum)
+- Weather endpoint (Perth, AU) using OpenWeatherMap with caching
+- Scheduled job to refresh weather hourly
+- Queue-based welcome email job
+- PHPUnit tests with HTTP fakes
 
 ---
 
-## 🛠️ Tech Stack
-
+## 🛠️ Requirements
 -   **Laravel** 12+
 -   **PHP** 8.2+
 -   **MySQL**
 -   **PHPUnit**
+-   **Mail driver (e.g. SMTP) set up in `.env` for sending welcome emails**
+
 
 ---
 
 ## 📂 Project Setup
 
-### 1️⃣ Clone & Install Dependencies
+### 🪡 Clone & Install Dependencies
 
 ```bash
 git clone https://github.com/sayamiky/reimagined-eureka.git
@@ -95,7 +96,7 @@ cd reimagined-eureka
 composer install
 ```
 
-### 2️⃣ Setup Environment, Migrate & Run
+### 📄 Setup Environment, Migrate & Run
 
 ```bash
 cp .env.example .env
@@ -118,9 +119,35 @@ WEATHER_API_KEY=your_api_key_here
 
 php artisan key:generate
 php artisan migrate
-php artisan migrate
 
 ```
+
+# 🌦️ Weather API
+
+- Register at [OpenWeatherMap](https://openweathermap.org) and get OPENWEATHERMAP_KEY
+- Add to .env:
+```bash
+OPENWEATHERMAP_KEY=your_key
+```
+
+
+# 📌 Laravel Queue & Job
+
+- Add to .env:
+```bash
+QUEUE_CONNECTION=database
+```
+- Run
+```bash
+php artisan queue:table
+php artisan migrate
+```
+- Command for test
+```bash
+php artisan demo:welcome {userId}
+php artisan queue:work  
+```
+
 
 ### 🧪 Running Tests
 
