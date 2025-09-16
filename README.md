@@ -89,14 +89,15 @@ Project ini adalah **REST API berbasis Laravel** yang mendukung:
 
 ### 1️⃣ Clone & Install Dependencies
 
-````bash
+```bash
 git clone https://github.com/sayamiky/reimagined-eureka.git
 cd reimagined-eureka
 composer install
+```
 
 ### 2️⃣ Setup Environment, Migrate & Run
 
-````bash
+```bash
 cp .env.example .env
 
 APP_NAME=LaravelAPI
@@ -119,3 +120,14 @@ php artisan key:generate
 php artisan migrate
 php artisan migrate
 
+```
+
+### 🧪 Running Tests
+
+Run Specific Test File
+
+```bash
+php artisan test --filter=UserApiTest
+php artisan test --filter=PostApiTest
+php artisan test --filter=WeatherApiTest
+```
