@@ -95,7 +95,8 @@ cd reimagined-eureka
 composer install
 
 ### 2️⃣ Setup Environment, Migrate & Run
-```bash
+
+````bash
 cp .env.example .env
 
 APP_NAME=LaravelAPI
@@ -118,6 +119,3 @@ php artisan key:generate
 php artisan migrate
 php artisan migrate
 
-
-
-````
