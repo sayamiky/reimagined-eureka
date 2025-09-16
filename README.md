@@ -60,33 +60,64 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT). -->
 
+# 🚀 Laravel API with User & Weather Tests
 
-# 🚀 Laravel API with User & Weather Tests  
+![Laravel](https://img.shields.io/badge/Laravel-12.x-red)  
+![PHP](https://img.shields.io/badge/PHP-8.2+-blue)  
+![Tested](https://img.shields.io/badge/Tests-Passing-green)
 
-![Laravel](https://img.shields.io/badge/Laravel-10.x-red)  
-![PHP](https://img.shields.io/badge/PHP-8.1+-blue)  
-![Tested](https://img.shields.io/badge/Tests-Passing-green)  
+## 📘 Project Overview
 
-## 📘 Project Overview  
-Project ini adalah **REST API berbasis Laravel** yang mendukung:  
-- 🔹 **User Management** (list user, register user dengan validasi sukses & gagal).  
-- 🔹 **Weather API** (fetch data cuaca dari layanan eksternal).  
-- 🔹 **Unit & Feature Tests** menggunakan PHPUnit.  
+Project ini adalah **REST API berbasis Laravel** yang mendukung:
 
----
-
-## 🛠️ Tech Stack  
-- **Laravel** 12+  
-- **PHP** 8.2+  
-- **MySQL**  
-- **PHPUnit**
+-   🔹 **User Management** (list user, register user dengan validasi sukses & gagal).
+-   🔹 **Weather API** (fetch data cuaca dari layanan eksternal).
+-   🔹 **Unit & Feature Tests** menggunakan PHPUnit.
 
 ---
 
-## 📂 Project Setup  
+## 🛠️ Tech Stack
 
-### 1️⃣ Clone & Install Dependencies  
-```bash
-git clone https://github.com/username/laravel-api-project.git
-cd laravel-api-project
+-   **Laravel** 12+
+-   **PHP** 8.2+
+-   **MySQL**
+-   **PHPUnit**
+
+---
+
+## 📂 Project Setup
+
+### 1️⃣ Clone & Install Dependencies
+
+````bash
+git clone https://github.com/sayamiky/reimagined-eureka.git
+cd reimagined-eureka
 composer install
+
+### 2️⃣ Setup Environment, Migrate & Run
+```bash
+cp .env.example .env
+
+APP_NAME=LaravelAPI
+APP_ENV=local
+APP_KEY=
+APP_DEBUG=true
+APP_URL=http://localhost:8000
+
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=laravel_api
+DB_USERNAME=root
+DB_PASSWORD=
+
+# API Key Weather
+WEATHER_API_KEY=your_api_key_here
+
+php artisan key:generate
+php artisan migrate
+php artisan migrate
+
+
+
+````
