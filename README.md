@@ -67,22 +67,24 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 ![Tested](https://img.shields.io/badge/Tests-Passing-green)
 
 ## 📘 Project Overview
+
 RESTful API built with Laravel. Features:
-- Users & Posts (CRUD for posts, user registration/login with Sanctum)
-- Weather endpoint (Perth, AU) using OpenWeatherMap with caching
-- Scheduled job to refresh weather hourly
-- Queue-based welcome email job
-- PHPUnit tests with HTTP fakes
+
+-   Users & Posts (CRUD for posts, user registration/login with Sanctum)
+-   Weather endpoint (Perth, AU) using OpenWeatherMap with caching
+-   Scheduled job to refresh weather hourly
+-   Queue-based welcome email job
+-   PHPUnit tests with HTTP fakes
 
 ---
 
 ## 🛠️ Requirements
+
 -   **Laravel** 12+
 -   **PHP** 8.2+
 -   **MySQL**
 -   **PHPUnit**
 -   **Mail driver (e.g. SMTP) set up in `.env` for sending welcome emails**
-
 
 ---
 
@@ -124,30 +126,34 @@ php artisan migrate
 
 # 🌦️ Weather API
 
-- Register at [OpenWeatherMap](https://openweathermap.org) and get OPENWEATHERMAP_KEY
-- Add to .env:
+-   Register at [OpenWeatherMap](https://openweathermap.org) and get OPENWEATHERMAP_KEY
+-   Add to .env:
+
 ```bash
 OPENWEATHERMAP_KEY=your_key
 ```
 
-
 # 📌 Laravel Queue & Job
 
-- Add to .env:
+-   Add to .env:
+
 ```bash
 QUEUE_CONNECTION=database
 ```
-- Run
+
+-   Run
+
 ```bash
 php artisan queue:table
 php artisan migrate
 ```
-- Command for test
+
+-   Artisan command to dispatch this job manually
+
 ```bash
 php artisan demo:welcome {userId}
-php artisan queue:work  
+php artisan queue:work
 ```
-
 
 ### 🧪 Running Tests
 
@@ -158,3 +164,28 @@ php artisan test --filter=UserApiTest
 php artisan test --filter=PostApiTest
 php artisan test --filter=WeatherApiTest
 ```
+
+## 📌 API Documentation
+
+You can import the provided Postman collection into Postman to test the API.
+
+[Download Postman Collection](./docs/Laravel-API-Collection.json)
+
+# Import Postman Collection
+
+**Import Step**
+
+1. **Open Postman.**
+2. Click the **Import** button in the top-left corner.
+3. Select the **.json** file of the Postman Collection provided.
+4. The collection will appear in the **Postman sidebar**.
+
+**Creating an Environment**
+
+To use the variables `{{url}}` and `{{token}}`:
+
+1. Click **Environments → Add New**.
+2. Add the following variables:
+    - `url` → `http://localhost:8000/api`
+    - `token` → `your_access_token`
+3. Select this environment before running requests so the variables are applied automatically.

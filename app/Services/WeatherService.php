@@ -15,7 +15,6 @@ class WeatherService
     {
         $this->apiKey = config('services.openweathermap.key') ?? env('OPENWEATHERMAP_KEY');
         $this->baseUrl = 'https://api.openweathermap.org/data/2.5';
-        // $this->baseUrl = 'https://api.openweathermap.org/data/3.0/onecall';
     }
 
     public function getCurrentWeatherForPerth()
@@ -24,13 +23,6 @@ class WeatherService
 
         return Cache::remember($cacheKey, now()->addMinutes(15), function () {
             try {
-                // $response = Http::timeout(10)->get("{$this->baseUrl}/weather", [
-                //     'lat' => -31.951399,
-                //     'lon' => 115.861678,
-                //     'exclude' => 'hourly',
-                //     'appid' => $this->apiKey,
-                //     'units' => 'metric'
-                // ]);
 
                 $response = Http::timeout(10)->get("{$this->baseUrl}/weather", [
                     'lat' => -31.951399,
@@ -56,7 +48,6 @@ class WeatherService
         });
     }
 
-    // Manual refresh used by scheduled job
     public function refreshWeatherForPerth()
     {
         $cacheKey = 'weather:perth:current';

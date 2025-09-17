@@ -46,7 +46,7 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        $post = Post::find($id);
+        $post = Post::findOrFail($id);
         if (! $post) {
             return response()->json(['message' => 'Post not found'], 404);
         }
@@ -63,12 +63,12 @@ class PostController extends Controller
     public function update(UpdatePostRequest $request, $id)
     {
         $data = $request->validated();
-        $post = Post::find($id);
+        $post = Post::findOrFail($id);
         if (! $post) {
             return response()->json(['message' => 'Post not found'], 404);
         }
         if ($post->user_id !== auth()->user()->id) {
-            return response()->json(['message' => 'You are not authorized to update this post'], 403);
+            abort(403, 'You are not authorized to update this post.');
         }
 
         $post->update($data);
@@ -85,8 +85,8 @@ class PostController extends Controller
     {
         $post = Post::findOrFail($id);
 
-        if ($post->user_id !== auth()->id()) {
-            return response()->json(['message' => 'Unauthorized'], 403);
+        if ($post->user_id !== auth()->user()->id()) {
+            abort(403, 'You are not authorized to delete this post.');
         }
 
         $post->delete();
