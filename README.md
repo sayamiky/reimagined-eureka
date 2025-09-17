@@ -171,7 +171,7 @@ You can import the provided Postman collection into Postman to test the API.
 
 [Download Postman Collection](./docs/Laravel-API-Collection.json)
 
-# Import Postman Collection
+### Import Postman Collection
 
 **Import Step**
 
