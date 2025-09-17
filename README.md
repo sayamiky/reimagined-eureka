@@ -90,7 +90,7 @@ RESTful API built with Laravel. Features:
 
 ## 📂 Project Setup
 
-### 🪡 Clone & Install Dependencies
+### 📦 Clone & Install Dependencies
 
 ```bash
 git clone https://github.com/sayamiky/reimagined-eureka.git
@@ -124,6 +124,14 @@ php artisan migrate
 
 ```
 
+## 🌱 Database Seeding
+
+To populate your database with sample users and posts, use Laravel seeders:
+
+```bash
+php artisan db:seed
+```
+
 # 🌦️ Weather API
 
 -   Register at [OpenWeatherMap](https://openweathermap.org) and get OPENWEATHERMAP_KEY
@@ -133,7 +141,7 @@ php artisan migrate
 OPENWEATHERMAP_KEY=your_key
 ```
 
-# 📌 Laravel Queue & Job
+# 📎 Laravel Queue & Job
 
 -   Add to .env:
 
