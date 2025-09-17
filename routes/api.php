@@ -25,7 +25,7 @@ Route::get('/weather', [WeatherController::class, 'current']);
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('/posts', [PostController::class, 'store']);
-    Route::put('/posts/{id}', [PostController::class, 'update']);
+    Route::patch('/posts/{id}', [PostController::class, 'update']);
     Route::delete('/posts/{id}', [PostController::class, 'destroy']);
 });
 

@@ -1,11 +1,11 @@
 {
     "info": {
-        "_postman_id": "db57a48c-fc7c-4fa9-949b-75f16e23e643",
+        "_postman_id": "b31ee4fe-a7f9-4691-8f84-2cb5cfd52924",
         "name": "Code Test",
         "description": "REST API built with Laravel (Users, Posts, Weather)",
         "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
         "_exporter_id": "19638754",
-        "_collection_link": "https://lively-escape-767605.postman.co/workspace/My-Workspace~177341b4-b8a4-4c70-8776-a2e1cf8c94fc/collection/19638754-db57a48c-fc7c-4fa9-949b-75f16e23e643?action=share&source=collection_link&creator=19638754"
+        "_collection_link": "https://lively-escape-767605.postman.co/workspace/My-Workspace~177341b4-b8a4-4c70-8776-a2e1cf8c94fc/collection/19638754-b31ee4fe-a7f9-4691-8f84-2cb5cfd52924?action=share&source=collection_link&creator=19638754"
     },
     "item": [
         {
@@ -228,7 +228,7 @@
                                 }
                             ]
                         },
-                        "method": "PUT",
+                        "method": "PATCH",
                         "header": [
                             {
                                 "key": "Accept",
