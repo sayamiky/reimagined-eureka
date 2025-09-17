@@ -1,0 +1,312 @@
+{
+    "info": {
+        "_postman_id": "db57a48c-fc7c-4fa9-949b-75f16e23e643",
+        "name": "Code Test",
+        "description": "REST API built with Laravel (Users, Posts, Weather)",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+        "_exporter_id": "19638754",
+        "_collection_link": "https://lively-escape-767605.postman.co/workspace/My-Workspace~177341b4-b8a4-4c70-8776-a2e1cf8c94fc/collection/19638754-db57a48c-fc7c-4fa9-949b-75f16e23e643?action=share&source=collection_link&creator=19638754"
+    },
+    "item": [
+        {
+            "name": "User",
+            "item": [
+                {
+                    "name": "Get User By Id",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{url}}/users/4",
+                            "host": ["{{url}}"],
+                            "path": ["users", "4"]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "Auth",
+            "item": [
+                {
+                    "name": "Register",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "type": "text"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\r\n    \"name\" : \"Abimana Daneswara\",\r\n    \"email\" : \"abimanadaneswara@gmail.com\",\r\n    \"password\" : \"password\",\r\n    \"password_confirmation\" : \"password\"\r\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/register",
+                            "host": ["{{url}}"],
+                            "path": ["register"]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Login",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "type": "text"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\r\n    \"email\" : \"abimanadaneswara@gmail.com\",\r\n    \"password\" : \"password\"\r\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/login",
+                            "host": ["{{url}}"],
+                            "path": ["login"]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Logout",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "1|ieaGdHoS2wPgOGj1bRmABqemXwuG1uYYQCn935zydb385d44",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "type": "text"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{url}}/logout",
+                            "host": ["{{url}}"],
+                            "path": ["logout"]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "Post",
+            "item": [
+                {
+                    "name": "Get All Post",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "type": "text"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{url}}/posts?page=1&perPage=1",
+                            "host": ["{{url}}"],
+                            "path": ["posts"],
+                            "query": [
+                                {
+                                    "key": "page",
+                                    "value": "1"
+                                },
+                                {
+                                    "key": "perPage",
+                                    "value": "1"
+                                }
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Store Post",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "type": "text"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\r\n    \"title\" : \"Explicabo et quis tempora sed aspernatur dolor.\",\r\n    \"description\" : \"Magnam ipsam veritatis quisquam autem dicta dolor. Quibusdam vel et ad iure. Aperiam qui alias in recusandae. Accusantium ea accusamus autem sequi molestiae porro. Nostrum quae perferendis nobis doloribus. Praesentium omnis non voluptatem quis. Id eos voluptas ipsam error aut. Rerum debitis aut quia officiis blanditiis assumenda qui. Consectetur voluptas veritatis et sit et. Ratione explicabo ex et qui quod.\",\r\n    \"published\" : true\r\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/posts",
+                            "host": ["{{url}}"],
+                            "path": ["posts"]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get Post By Id",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "type": "text"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{url}}/posts/1",
+                            "host": ["{{url}}"],
+                            "path": ["posts", "1"]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Update Post",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "type": "text"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\r\n    \"title\" : \"Explicabo et quis tempora sed aspernatur dolor.\",\r\n    \"description\" : \"Magnam ipsam veritatis quisquam autem dicta dolor. Quibusdam vel et ad iure. Aperiam qui alias in recusandae. Accusantium ea accusamus autem sequi molestiae porro. Nostrum quae perferendis nobis doloribus. Praesentium omnis non voluptatem quis. Id eos voluptas ipsam error aut. Rerum debitis aut quia officiis blanditiis assumenda qui. Consectetur voluptas veritatis et sit et. Ratione explicabo ex et qui quod.\",\r\n    \"published\" : false\r\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{url}}/posts/4",
+                            "host": ["{{url}}"],
+                            "path": ["posts", "4"]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Delete Post",
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "type": "text"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{url}}/posts/1",
+                            "host": ["{{url}}"],
+                            "path": ["posts", "1"]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "Weather",
+            "item": [
+                {
+                    "name": "Get Weather",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "type": "text"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{url}}/weather",
+                            "host": ["{{url}}"],
+                            "path": ["weather"]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        }
+    ]
+}
